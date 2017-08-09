@@ -1,3 +1,6 @@
+## Note
+This is the solutions branch. Don't peep until you've completed/submitted your attempt at using_restricted_array.
+
 # Restricted-Array
 Assignment: Develop common methods on data structure using a restricted array.
 restricted_array.rb provides the RestrictedArray class to be used.
