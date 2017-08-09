@@ -7,29 +7,87 @@ require_relative 'restricted_array.rb'
 SPECIAL_VALUE = 9999
 
 ## Calculates the length of the restricted integer array_size
+# Time complexity = O(n) since all elements in the array will be visited once
+# Space complexity = O(1) since the additional storage needed does not depend
+#                    on input array size.
 def length(array)
-  puts "NOT IMPLEMENTED"
+  i = 0
+  while array[i] != nil
+    i += 1
+  end
+  return i
 end
 
 # Prints each integer values in the array
+# Time complexity = O(n) since all elements in the array will be visited once
+# Space complexity = O(1) since the additional storage needed does not depend
+#                    on input array size.
 def print_array(array)
-  puts "NOT IMPLEMENTED"
+  i = 0
+  while array[i] != nil
+    print "#{array[i]} "
+    i += 1
+  end
+  puts
 end
 
 # Reverses the values in the integer array
+# Time complexity = O(n) since all elements in the array will be updated at most once
+# Space complexity = O(1) since the additional storage needed does not depend
+#                    on input array size.
 def reverse(array, length) # Ruby
-  puts "NOT IMPLEMENTED"
+  return if length < 2 # if length is 0 or 1, nothing to reverse
+  front_index = 0
+  back_index = length-1
+  while front_index < back_index
+    # swap using temp variable
+    temp = array[front_index]
+    array[front_index] = array[back_index]
+    array[back_index] = temp
+    # increment front index, decrement back index
+    front_index += 1
+    back_index -= 1
+  end
 end
 
 # For an unsorted array, searches for 'value_to_find'.
 # Returns true if found, false otherwise.
+# Time complexity = O(n) since all elements in the array will be visited once
+# Space complexity = O(1) since the additional storage needed does not depend
+#                    on input array size.
 def search(array, length, value_to_find)
-  puts "NOT IMPLEMENTED"
+  length.times do |index|
+    if array[index] == value_to_find
+      return true
+    end
+  end
+
+  return false # not found
 end
 
+# Implements selection sort
 # Sorts the array in ascending order.
+# Time complexity = O(n^2) since to find the correct value to be in a given location,
+# all the remaining elements are visited. This is done for each location.
+# (nested loop of size n each)
+# Space complexity = O(1) since the additional storage needed does not depend
+#                    on input array size.
 def sort(array, length)
-  puts "NOT IMPLEMENTED"
+  length.times do |index| # outer loop - n elements
+    min_index = index # assume index is where the next minimally value is
+    temp_index = index+1 # compare with values at index+1 to length-1
+    while temp_index < length # inner loop - n-1 elements
+      if array[temp_index] < array[min_index] # found a new minimum, update min_index
+        min_index = temp_index
+      end
+      temp_index += 1
+    end
+    if min_index != index # next minimum value is not at current index, swap
+      temp = array[min_index]
+      array[min_index] = array[index]
+      array[index] = temp
+    end
+  end
 end
 
 # Restricted arrays cannot be resized. So, we follow a convention.
@@ -37,21 +95,53 @@ end
 # Deletes 'value_to_delete' if found in the array. To keep the array size
 # constant, adds an element with 'SPECIAL_VALUE' in the end. Assumes the array
 # to be sorted in ascending order.
+# Time complexity = O(n) since all elements in the array will be visited.
+# Space complexity = O(1) since the additional storage needed does not depend
+#                    on input array size.
 def delete(array, length, value_to_delete)
-  puts "NOT IMPLEMENTED"
+  length.times do |index|
+    if (array[index] == value_to_delete) # value_to_delete found
+      # defrag array
+      while index+1 < length && array[index] != SPECIAL_VALUE
+        array[index] = array[index+1]
+        index += 1
+      end
+      array[index] = SPECIAL_VALUE
+      # done defraging
+      return
+    end
+  end
+  # value_to_delete not found
 end
 
 # Restricted array cannot be resized. So, we workaround by having a convention
 # Convention: replace all values with 'SPECIAL_VALUE'
 # Empties the restricted array by making all values = SPECIAL_VALUE
+# Time complexity = O(n) since all elements in the array will be updated once
+# Space complexity = O(1) since the additional storage needed does not depend
+#                    on input array size.
 def empty(array, length)
-  puts "NOT IMPLEMENTED"
+  length.times do |index|
+    array[index] = SPECIAL_VALUE
+  end
 end
 
 # Finds and returns the largest value element in the array which is not 'SPECIAL_VALUE'
 # Assumes that the array is not sorted.
+# Time complexity = O(n) since all elements in the array will be visited once.
+# Space complexity = O(1) since the additional storage needed does not depend
+#                    on input array size.
 def find_largest(array, length)
-  puts "NOT IMPLEMENTED"
+  return -1 if length == 0 # special casing
+  index = 0
+  largest = array[index]
+  while index+1 < length && array[index+1] != SPECIAL_VALUE
+    index += 1
+    if array[index] > largest
+      largest = array[index]
+    end
+  end
+  return largest
 end
 
 # Insert value to insert at the correct index into the array assuming the array
@@ -59,8 +149,35 @@ end
 # Restricted arrays cannot be resized. Insert only if there is space in the array.
 # (Hint: if there are elements with 'SPECIAL_VALUE', there is no room to insert)
 # All subsequent elements will need to be moved forward by one index.
+# Time complexity = O(n) since finding where to insert could take upto array length time
+# Space complexity = O(1) since the additional storage needed does not depend
+#                    on input array size.
 def insert_ascending(array, length, value_to_insert)
-  puts "NOT IMPLEMENTED"
+  # we can't resize array. if there is no room to insert, return.
+  return if array[length-1] != SPECIAL_VALUE
+
+  insert_index_found = false
+  length.times do |index|
+    # find the index where value_to_insert should be inserted in ascening order
+    if insert_index_found == false && array[index] > value_to_insert
+      insert_index_found = true
+      # found the index to insert at -> insert ascending
+    end
+
+    # once found, save value at index into temp, insert value_to_insert
+    # update value_to_insert to be temp and continue down the array
+    if insert_index_found == true
+        # insert and move existing values one index forward for the rest of the array
+        temp = array[index]
+        array[index] = value_to_insert
+        value_to_insert = temp
+    end
+
+    # if value_to_insert is SPECIAL_VALUE, we are done inserting
+    if value_to_insert == SPECIAL_VALUE
+      break
+    end
+  end
 end
 
 ## --- END OF METHODS ---
