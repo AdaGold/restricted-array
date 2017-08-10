@@ -6,20 +6,20 @@ What is the time and space complexity for each method you implemented? Provide j
 
 |  Question 	|  Answer 	|
 |---	|---	|
-|  What is the time complexity of the length method?	|   	|
-|  What is the space complexity of the length method?	|   	|
-|  What is the time complexity of the print_array method?	|   	|
-|  What is the space complexity of the print_array method?	|   	|
-|  What is the time complexity of the reverse method?	|   	|
-|  What is the space complexity of the reverse method?	|   	|
-|  What is the time complexity of the search method?	|   	|
-|  What is the space complexity of the search method?	|   	|
-|  What is the time complexity of the delete method?	|   	|
-|  What is the space complexity of the delete method?	|   	|
-|  What is the time complexity of the empty method?	|   	|
-|  What is the space complexity of the empty method?	|   	|
-|  What is the time complexity of the find_largest method?	|   	|
-|  What is the space complexity of the find_largest method?	|   	|
-|  What is the time complexity of the insert_ascending method?	|   	|
-|  What is the space complexity of the insert_ascending method?	|   	|
+|  What is the time complexity of the length method? Provide justification.	|   	|
+|  What is the space complexity of the length method? Provide justification.	|   	|
+|  What is the time complexity of the print_array method? Provide justification.	|   	|
+|  What is the space complexity of the print_array method? Provide justification.	|   	|
+|  What is the time complexity of the reverse method? Provide justification.	|   	|
+|  What is the space complexity of the reverse method? Provide justification.	|   	|
+|  What is the time complexity of the search method? Provide justification.	|   	|
+|  What is the space complexity of the search method? Provide justification.	|   	|
+|  What is the time complexity of the delete method? Provide justification.	|   	|
+|  What is the space complexity of the delete method? Provide justification.	|   	|
+|  What is the time complexity of the empty method? Provide justification.	|   	|
+|  What is the space complexity of the empty method? Provide justification.	|   	|
+|  What is the time complexity of the find_largest method? Provide justification.	|   	|
+|  What is the space complexity of the find_largest method? Provide justification.	|   	|
+|  What is the time complexity of the insert_ascending method? Provide justification.	|   	|
+|  What is the space complexity of the insert_ascending method? Provide justification.	|   	|
 
