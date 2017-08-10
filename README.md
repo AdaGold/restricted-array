@@ -10,7 +10,7 @@ None of the other methods available in the Ruby Array class are available in the
 
 ## Exercise
 Implement the methods in using_restricted_array.rb. Methods to implement are:
-- *length* - which calculates the length of the integer array and returns it
+- *length* - which calculates the length of the integer array and returns it. Assume that all values are integers and the value of element past the array length is `nil`
 - *print_array* - which prints each integer value separated by space on the same line
 - *reverse* - which reverses the values in the array in place
 - *search* - which looks for a given integer value in the array. Returns true if found, false otherwise.
