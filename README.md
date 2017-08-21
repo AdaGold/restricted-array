@@ -24,4 +24,5 @@ Implement the methods in using_restricted_array.rb. Methods to implement are:
 - *find_largest* - Finds and returns the largest value element in the array which is not 'SPECIAL_VALUE'
 - *insert_ascending* - Insert value to insert at the correct index into the array assuming the array is sorted in ascending manner.
                        Restricted arrays cannot be resized. Insert only if there is space in the array.
-                       Hint: If there are elements with 'SPECIAL_VALUE', there is no room to insert. All subsequent elements will need to be moved forward by one index.
+                       Hint: If there are no elements with 'SPECIAL_VALUE', there is no room to insert. 
+                       All subsequent elements will need to be moved forward by one index.
