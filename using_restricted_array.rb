@@ -147,7 +147,7 @@ end
 # Insert value to insert at the correct index into the array assuming the array
 # is sorted in ascending manner.
 # Restricted arrays cannot be resized. Insert only if there is space in the array.
-# (Hint: if there are elements with 'SPECIAL_VALUE', there is no room to insert)
+# (Hint: if there are no elements with 'SPECIAL_VALUE', there is no room to insert)
 # All subsequent elements will need to be moved forward by one index.
 # Time complexity = O(n) since finding where to insert could take upto array length time
 # Space complexity = O(1) since the additional storage needed does not depend
